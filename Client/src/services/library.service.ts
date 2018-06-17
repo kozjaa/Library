@@ -25,6 +25,10 @@ export class LibraryService {
   getBookById(id) {
     return this.http.get(this.apiUrl + '/book/' + id);
   }
+  
+  deleteBook(id) {
+    return this.http.get(this.apiUrl + '/book/delete/' + id);
+  }
 
   addNewBook(data) {
     console.warn(data);

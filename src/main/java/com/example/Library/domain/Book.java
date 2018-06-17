@@ -26,6 +26,15 @@ public class Book {
     public Book()
     {}
 
+    public Book(Integer id, String author, String title, String description, String read)
+    {
+        this.id = id;
+        this.read = read;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+    }
+
     public Book(String author, String title, String description, String read)
     {
         this.read = read;

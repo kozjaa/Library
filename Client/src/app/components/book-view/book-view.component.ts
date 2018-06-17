@@ -14,15 +14,27 @@ export class BookViewComponent implements OnInit {
   constructor(private libraryService: LibraryService, private route: ActivatedRoute, private router: Router) {
     const id = this.route.snapshot.params['id'];
     this.libraryService.getBookById(id).subscribe( (book: any) => {
-      this.book = book;
+      
       if (!book) {
         this.router.navigate(['/books']);
+      } else {
+        this.book = book;
       }
     });
   }
 
   ngOnInit() {
     
+  }
+
+  deleteBook(id) {
+    this.libraryService.deleteBook(id).subscribe( (res) => {
+
+      if (res) {
+        this.router.navigate(['/books']);
+      }
+      
+    })
   }
 
 }

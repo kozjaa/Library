@@ -9,7 +9,7 @@ import {LibraryService} from '../../../services/library.service';
 
 export class BookListComponent implements OnInit {
 
-  booksList: Array<string>;
+  booksList: any;
 
   constructor(private libraryService: LibraryService) {
   }
@@ -22,6 +22,15 @@ export class BookListComponent implements OnInit {
     this.libraryService.getAllBooks().subscribe((books: any) => {
       this.booksList = books;
     });
+  }
+  
+  deleteBook(id) {
+    this.libraryService.deleteBook(id).subscribe( (res) => {
+
+      if (res) {
+        this.getBooks();
+      }
+    })
   }
 
   changeReadStatus(id) {
