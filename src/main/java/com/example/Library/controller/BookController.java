@@ -15,20 +15,16 @@ import java.util.List;
 public class BookController {
 
     @Autowired
-    BookService bookService;
-
+    private BookService bookService;
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public List<Book> getAllBooks() {
-
         List<Book> allBooks = (List<Book>) bookService.getAllBooks();
-
         return allBooks;
     }
 
     @RequestMapping(value = "/newbook", method = RequestMethod.GET)
     public Book createBook() {
-
         return new Book();
     }
 
@@ -51,42 +47,30 @@ public class BookController {
 
     @RequestMapping(value = "book/delete/{id}", method = RequestMethod.GET)
     public boolean deleteBook(@PathVariable("id") Integer id) {
-
         bookService.deleteBook(id);
-
         return true;
     }
 
-
     @RequestMapping(value = "book/{id}", method = RequestMethod.GET)
     public Book getBookById(@PathVariable("id") Integer id) {
-
         Book book = bookService.getBookById(id);
-
         return book;
     }
 
     @RequestMapping(value = "/book/edit/{id}", method = RequestMethod.GET)
     public Book editBook(@PathVariable("id") Integer id) {
-
         Book book = bookService.getBookById(id);
-
         return book;
     }
 
     @RequestMapping(value = "/book/read/{id}", method = RequestMethod.GET)
     public boolean isRead(@PathVariable("id") Integer id) {
-
         Book book = bookService.getBookById(id);
-
-        if (book.getRead().equals("Nie"))
-            book.setRead("Tak");
-
-        else
-            book.setRead("Nie");
-
-        bookService.saveBook(book);
-
+        if (book.getRead().equals("Nie")){
+            book.setRead("Tak");}
+        else{
+            book.setRead("Nie");}
+            bookService.saveBook(book);
         return true;
     }
 }

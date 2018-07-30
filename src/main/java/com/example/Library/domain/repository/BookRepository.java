@@ -16,8 +16,9 @@ public class BookRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public BookRepository()
-    {}
+    public BookRepository() {
+
+    }
 
     public Collection<Book> getAllBooks()
     {
@@ -30,8 +31,7 @@ public class BookRepository {
     }
 
     @Transactional
-    public void deleteBook(Integer id)
-    {
+    public void deleteBook(Integer id) {
         Book book = new Book();
         book.setId(id);
         entityManager.remove(entityManager.contains(book) ? book : entityManager.merge(book));
@@ -42,5 +42,4 @@ public class BookRepository {
     {
         entityManager.merge(book);
     }
-
 }

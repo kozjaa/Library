@@ -11,13 +11,13 @@ import java.util.Collection;
 public class BookService {
 
     @Autowired
-    BookRepository bookRepository;
+    private BookRepository bookRepository;
 
-    public BookService()
-    {}
+    public BookService() {
 
-    public Collection<Book> getAllBooks()
-    {
+    }
+
+    public Collection<Book> getAllBooks() {
         return bookRepository.getAllBooks();
     }
 
@@ -26,8 +26,7 @@ public class BookService {
         bookRepository.deleteBook(id);
     }
 
-    public Book getBookById(Integer id)
-    {
+    public Book getBookById(Integer id) {
         return bookRepository.getBookById(id);
     }
 
@@ -35,5 +34,4 @@ public class BookService {
     {
         bookRepository.saveBook(book);
     }
-
 }
